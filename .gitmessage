@@ -1,0 +1,32 @@
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+
+# --- COMMIT MESSAGE GUIDELINES ---
+#
+# Type can be:
+#   feat:     New feature
+#   fix:      Bug fix
+#   docs:     Documentation
+#   style:    Formatting changes
+#   refactor: Code restructuring
+#   test:     Adding tests
+#   chore:    Maintenance
+#   perf:     Performance improvement
+#   ci:       CI/CD changes
+#   build:    Build system changes
+#
+# Scope (optional): Component/module affected
+# Subject: Brief description (50 chars max)
+# Body: Detailed explanation (optional)
+# Footer: Breaking changes, issue references
+#
+# Example:
+# feat(auth): add user login validation
+#
+# Add form validation for email and password fields
+# to improve user experience and security
+#
+# Closes #123
