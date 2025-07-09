@@ -2,25 +2,7 @@ import { useCallback, useState } from 'react';
 import { Task, TaskFromData } from '../types/Task';
 
 export const useTask = () => {
-  const tasksData = [
-    {
-      id: '0001',
-      title: 'Task 1',
-      description: 'Finish the homepage layout',
-      completed: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: '0002',
-      title: 'Task 2',
-      description: 'Fix login form validation',
-      completed: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ];
-  const [tasks, setTasks] = useState<Task[]>(tasksData);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const addTask = useCallback((taskData: TaskFromData) => {
     const newTask: Task = {

@@ -1,35 +1,59 @@
+import { useState } from 'react';
 import './App.css';
+import { TaskForm } from './components/tasks/TaskForm';
 import { TaskList } from './components/tasks/TaskList';
 import { useTask } from './hooks/useTask';
 import './styles/globals.css';
+import { Task } from './types/Task';
 
 function App() {
   const { tasks, addTask, toggleTask, deleteTask, updateTask } = useTask();
 
+  const [editingTask, setEditingTask] = useState<Task | undefined>();
+
   console.log('tasks', tasks);
 
-  const handleAddTask = () => {
-    addTask({
-      title: 'AI',
-      description: 'dome ',
-    });
+  const handleAddTask = (taskData: { title: string; description: string }) => {
+    addTask(taskData);
+  };
+  const handleEditTask = (task: Task) => {
+    setEditingTask(task);
   };
 
-  const handleUpdate = () => {
-    console.log('handleUpdate pressed');
-    updateTask('0001', { title: 'MOOON', description: 'Welcome to mutated ' });
+  const handleUpdateTask = (taskData: {
+    title: string;
+    description: string;
+  }) => {
+    if (editingTask) {
+      updateTask(editingTask.id, taskData);
+      setEditingTask(undefined);
+    }
+  };
+
+  const handleCancel = () => {
+    setEditingTask(undefined);
   };
 
   return (
-    <div className="App">
-      <button onClick={handleAddTask}>Add</button>
-      <button onClick={handleUpdate}>Update</button>
-      <TaskList
-        tasks={tasks}
-        onDeleteTask={deleteTask}
-        onEditTask={() => {}}
-        onToggleTask={toggleTask}
-      />
+    <div className="container">
+      <header>
+        <h1>TaskFlow</h1>
+        <p>Manage your tasks efficiently</p>
+      </header>
+
+      <main>
+        <TaskForm
+          onCancel={handleCancel}
+          onSubmit={editingTask ? handleUpdateTask : handleAddTask}
+          editingTask={editingTask}
+        />
+        <TaskList
+          tasks={tasks}
+          onDeleteTask={deleteTask}
+          onEditTask={handleEditTask}
+          onToggleTask={toggleTask}
+        />
+      </main>
     </div>
   );
 }
