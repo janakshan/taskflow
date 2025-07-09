@@ -30,7 +30,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   };
 
   return (
-    <div className={'task-item completed'}>
+    <div
+      className={`task-item ${task.completed ? 'completed' : ''}`}
+      key={task.id}
+    >
       <input
         type="checkbox"
         checked={task.completed}

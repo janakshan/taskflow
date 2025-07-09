@@ -26,6 +26,7 @@ export const TaskList: React.FC<TaskListProps> = ({
     <div>
       {tasks.map(task => (
         <TaskItem
+          key={task.id}
           task={task}
           onDelete={onDeleteTask}
           onEdit={onEditTask}

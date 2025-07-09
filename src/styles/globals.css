@@ -16,6 +16,7 @@
 
 .task-item.completed {
   opacity: 0.7;
+  background-color: rgb(101, 120, 105);
 }
 
 .task-item.completed.task-content h3 {
