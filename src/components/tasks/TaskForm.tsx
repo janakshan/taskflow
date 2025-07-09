@@ -105,20 +105,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({
             maxLength={500}
             onChange={handleChange}
           />
-          <div className="form-actions">
-            <button type="submit" className="btn btn-primary">
-              {editingTask ? 'Update Task' : 'Add Task'}
-            </button>
-            {editingTask && onCancel && (
-              <button
-                type="button"
-                onClick={onCancel}
-                className="btn btn-secondary"
-              >
-                Cancel
-              </button>
-            )}
-          </div>
         </div>
       </form>
     </div>

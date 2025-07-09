@@ -36,9 +36,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({
     >
       <input
         type="checkbox"
+        className="task-checkbox"
         checked={task.completed}
         onChange={handleToggle}
-        area-label={`Mark ${task.title} as ${task.completed ? 'incomplete' : 'complete'}`}
+        aria-label={`Mark ${task.title} as ${task.completed ? 'incomplete' : 'complete'}`}
       />
 
       <div className="task-content">
@@ -47,10 +48,13 @@ export const TaskItem: React.FC<TaskItemProps> = ({
       </div>
 
       <div className="task-actions">
-        <button className="btn btn-secountry" onClick={handleEdit}>
-          Edit
-        </button>
-        <button className="btn btn-danger" onClick={handleDelete}>
+        {!task.completed && (
+          <button className="btn btn-secondary btn-sm" onClick={handleEdit}>
+            Edit
+          </button>
+        )}
+
+        <button className="btn btn-danger btn-sm" onClick={handleDelete}>
           Delete
         </button>
       </div>

@@ -36,12 +36,12 @@ function App() {
 
   return (
     <div className="container">
-      <header>
+      <header className="app-header">
         <h1>TaskFlow</h1>
-        <p>Manage your tasks efficiently</p>
+        <p>Manage your tasks efficiently and stay organized</p>
       </header>
 
-      <main>
+      <main className="app-main">
         <TaskForm
           onCancel={handleCancel}
           onSubmit={editingTask ? handleUpdateTask : handleAddTask}
